@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js")</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProMentors — Talk to an expert mentor, one on one</title>
+<meta name="description" content="ProMentors connects you with experienced mentors for JEE, NEET, UPSC, MBA, careers and startups. Browse mentors, book a session and talk over video or voice call.">
+<link rel="canonical" href="https://mentorpro.in/">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#1C1712">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ProMentors — Talk to an expert mentor, one on one">
+<meta property="og:description" content="Browse mentors, book a session and get real guidance over video or voice call.">
+<meta property="og:url" content="https://mentorpro.in/">
+<meta property="og:image" content="https://mentorpro.in/assets/icon.png">
+<style>
+  :root {
+    --ink: #1C1712; --ink-soft: #2A2118; --cream: #F3ECE1; --paper: #FBF8F3;
+    --gold: #A9805A; --gold-light: #D9B88F; --muted: #6B5E51; --line: #E2D7C7;
+    --cocoa: #7A5B4C; --radius: 18px; --max: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  .serif { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-weight: 500; }
+
+  header.nav {
+    position: sticky; top: 0; z-index: 10; background: rgba(251,248,243,.88);
+    backdrop-filter: saturate(160%) blur(10px); -webkit-backdrop-filter: saturate(160%) blur(10px);
+    border-bottom: 1px solid transparent; transition: border-color .2s;
+  }
+  header.nav.scrolled { border-bottom-color: var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 18px; }
+  .brand img { width: 34px; height: 34px; border-radius: 9px; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 15px; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links .btn { color: var(--cream); padding: 10px 18px; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 999px;
+    text-decoration: none; font-weight: 600; font-size: 15px; transition: transform .15s, background .15s, border-color .15s;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-dark { background: var(--ink); color: var(--cream); }
+  .btn-dark:hover { background: var(--ink-soft); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--gold); }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+
+  /* Hero */
+  .hero { padding: 80px 0 96px; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(40px, 6vw, 70px); line-height: 1.04; letter-spacing: -0.02em; margin: 0 0 24px; }
+  .hero h1 em { color: var(--gold); }
+  .lead { font-size: clamp(18px, 2vw, 20px); color: var(--muted); max-width: 50ch; margin: 0 0 36px; }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 36px; }
+  .chip { font-size: 14px; padding: 6px 14px; border-radius: 999px; background: var(--cream); color: var(--ink-soft); }
+
+  .stage {
+    position: relative; border-radius: 32px; min-height: 540px;
+    background: linear-gradient(160deg, #8A6A5A 0%, #6D5245 100%);
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+  .phone {
+    width: 260px; border-radius: 38px; background: var(--paper); padding: 22px 16px 18px;
+    box-shadow: 0 30px 70px rgba(0,0,0,.35); display: flex; flex-direction: column; gap: 10px;
+  }
+  .phone .ph-title { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 20px; margin: 4px 4px 2px; }
+  .phone .tabs { display: flex; gap: 6px; margin: 0 2px 4px; }
+  .phone .tab { font-size: 11px; padding: 4px 10px; border-radius: 999px; background: var(--cream); color: var(--muted); }
+  .phone .tab.on { background: var(--ink); color: var(--cream); }
+  .m { display: flex; gap: 10px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 10px; }
+  .m .av { width: 38px; height: 38px; border-radius: 50%; flex: none; display: grid; place-items: center; color: #fff; font-weight: 700; font-size: 14px; }
+  .m .who { flex: 1; min-width: 0; }
+  .m .nm { font-size: 13px; font-weight: 600; line-height: 1.2; }
+  .m .tg { font-size: 11px; color: var(--muted); line-height: 1.3; }
+  .m .live { font-size: 10px; font-weight: 700; color: #1F8A5B; display: flex; align-items: center; gap: 4px; }
+  .m .live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #22C27A; }
+  .m .rt { font-size: 11px; color: var(--muted); text-align: right; white-space: nowrap; }
+  .phone .book { margin-top: 6px; background: var(--ink); color: var(--cream); text-align: center; font-size: 13px; font-weight: 600; padding: 11px; border-radius: 12px; }
+  .callcard {
+    position: absolute; right: 22px; bottom: 28px; width: 150px; background: var(--ink); color: var(--cream);
+    border-radius: 18px; padding: 12px; box-shadow: 0 20px 40px rgba(0,0,0,.35); font-size: 12px;
+  }
+  .callcard .vid { height: 84px; border-radius: 12px; background: linear-gradient(135deg, #5D4037, #A67B5B); margin-bottom: 8px; position: relative; }
+  .callcard .vid::after { content: ""; position: absolute; right: 6px; bottom: 6px; width: 34px; height: 44px; border-radius: 8px; background: linear-gradient(135deg, #3E2723, #6D4C33); border: 2px solid var(--ink); }
+  .callcard .row { display: flex; justify-content: space-between; color: var(--gold-light); }
+
+  section { padding: 96px 0; }
+  .section-head { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: end; margin-bottom: 56px; }
+  .section-head h2 { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; margin: 0; letter-spacing: -0.01em; }
+  .section-head p { color: var(--muted); margin: 0; max-width: 54ch; }
+
+  /* Steps */
+  #how { background: var(--cream); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; counter-reset: s; }
+  .step { background: var(--paper); border-radius: var(--radius); padding: 32px; border: 1px solid var(--line); }
+  .step .n { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--gold-light); display: grid; place-items: center; font-weight: 700; margin-bottom: 20px; }
+  .step h3 { font-size: 22px; margin: 0 0 8px; }
+  .step p { margin: 0; color: var(--muted); font-size: 16px; }
+
+  /* Topics */
+  .topics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .topic { border-top: 2px solid var(--ink); padding-top: 20px; }
+  .topic h3 { font-size: 21px; margin: 0 0 12px; }
+  .topic ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .topic li { font-size: 14px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-soft); }
+
+  /* Features */
+  #features { background: var(--ink); color: var(--cream); }
+  #features .section-head p { color: #CFC3B4; }
+  .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #3B3128; border: 1px solid #3B3128; border-radius: var(--radius); overflow: hidden; }
+  .feat { background: var(--ink); padding: 32px; }
+  .feat svg { width: 28px; height: 28px; stroke: var(--gold-light); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 18px; }
+  .feat h3 { font-size: 20px; margin: 0 0 8px; }
+  .feat p { margin: 0; color: #CFC3B4; font-size: 15.5px; }
+
+  /* Mentors CTA */
+  .mentor-cta { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; background: var(--cream); border-radius: 28px; padding: 56px; }
+  .mentor-cta h2 { font-size: clamp(28px, 3.2vw, 40px); line-height: 1.12; margin: 0 0 14px; }
+  .mentor-cta p { margin: 0; color: var(--muted); }
+  .mentor-cta ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  .mentor-cta li { display: flex; gap: 12px; }
+  .mentor-cta li::before { content: ""; flex: 0 0 8px; height: 8px; margin-top: 9px; border-radius: 50%; background: var(--gold); }
+
+  /* FAQ */
+  .faq { max-width: 820px; }
+  details { border-bottom: 1px solid var(--line); padding: 20px 0; }
+  summary { cursor: pointer; list-style: none; font-size: 19px; font-weight: 600; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--gold); font-size: 24px; line-height: 1; transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--muted); margin: 12px 0 0; max-width: 68ch; }
+
+  /* Download band */
+  .band { background: var(--ink); color: var(--cream); border-radius: 28px; padding: 64px 56px; display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+  .band h2 { font-size: clamp(28px, 3.4vw, 42px); margin: 0 0 8px; line-height: 1.1; }
+  .band p { margin: 0; color: #CFC3B4; }
+  .band .btn { background: var(--cream); color: var(--ink); }
+
+  footer { color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); margin-top: 96px; }
+  .foot { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; padding: 40px 24px; flex-wrap: wrap; }
+  .foot nav { display: flex; gap: 22px; flex-wrap: wrap; }
+  .foot a { text-decoration: none; }
+  .foot a:hover { color: var(--ink); }
+
+  .js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+  .js .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  @media (max-width: 960px) {
+    .topics { grid-template-columns: repeat(2, 1fr); }
+    .feat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 820px) {
+    .nav-links a:not(.btn) { display: none; }
+    .hero { padding: 48px 0 72px; }
+    section { padding: 72px 0; }
+    .hero-grid, .section-head, .steps, .mentor-cta, .feat-grid { grid-template-columns: 1fr; }
+    .section-head { gap: 14px; margin-bottom: 40px; }
+    .stage { min-height: 500px; }
+    .mentor-cta, .band { padding: 36px 28px; }
+  }
+  @media (max-width: 520px) {
+    .topics { grid-template-columns: 1fr; }
+    .callcard { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand"><img src="assets/icon.png" alt="">ProMentors</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#how">How it works</a>
+      <a href="#topics">Topics</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-dark" href="https://play.google.com/store/apps/details?id=com.promentors.app" target="_blank" rel="noopener">Get the app</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">One-on-one mentorship</span>
+        <h1 class="serif">Talk to someone who's <em>been there.</em></h1>
+        <p class="lead">ProMentors connects you with experienced mentors for exams, careers and startups. Pick a mentor, book a session, and get real answers over a video or voice call.</p>
+        <div class="cta-row">
+          <a class="btn btn-dark" href="https://play.google.com/store/apps/details?id=com.promentors.app" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 1.8 13.4 12l-9.8 10.2c-.4-.2-.6-.7-.6-1.2V3c0-.5.2-1 .6-1.2Zm11 11.4 2.5 2.5-11 6.3 8.5-8.8Zm3.8-3.6 2.7 1.6c.8.4.8 1.6 0 2l-2.7 1.6-2.8-2.8 2.8-2.4ZM6.1 2l11 6.3-2.5 2.5L6.1 2Z"/></svg>
+            Get it on Google Play
+          </a>
+          <a class="btn btn-ghost" href="#how">How it works</a>
+        </div>
+        <div class="chips" aria-label="Popular topics">
+          <span class="chip">JEE</span><span class="chip">NEET</span><span class="chip">UPSC</span><span class="chip">MBA</span><span class="chip">Software Engineering</span><span class="chip">Startups</span>
+        </div>
+      </div>
+
+      <div class="stage reveal" aria-hidden="true">
+        <div class="phone">
+          <div class="ph-title">Find your mentor</div>
+          <div class="tabs"><span class="tab on">All</span><span class="tab">Exam Prep</span><span class="tab">Careers</span></div>
+          <div class="m"><div class="av" style="background:linear-gradient(135deg,#3E2723,#6D4C33)">AR</div><div class="who"><div class="nm">JEE Mentor</div><div class="tg">Physics · Maths</div><div class="live">Available now</div></div><div class="rt">★ 4.9</div></div>
+          <div class="m"><div class="av" style="background:linear-gradient(135deg,#6F4E37,#A67B5B)">SK</div><div class="who"><div class="nm">Product Manager</div><div class="tg">PM interviews</div></div><div class="rt">★ 4.8</div></div>
+          <div class="m"><div class="av" style="background:linear-gradient(135deg,#5D4037,#8D6E63)">NP</div><div class="who"><div class="nm">UPSC Mentor</div><div class="tg">Prelims · Mains</div><div class="live">Available now</div></div><div class="rt">★ 4.9</div></div>
+          <div class="book">Book a session</div>
+        </div>
+        <div class="callcard">
+          <div class="vid"></div>
+          <div class="row"><span>Video call</span><span>12:40</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="serif">Guidance in three steps</h2>
+        <p>No forms to fill or waiting lists. Find the right person and start talking.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="n">1</div><h3 class="serif">Find a mentor</h3><p>Browse by category or domain. See each mentor's expertise, rating and per-minute rate, and who's available right now.</p></div>
+        <div class="step reveal"><div class="n">2</div><h3 class="serif">Book a session</h3><p>Book a consultation and pay securely in the app. Message your mentor to share context before you talk.</p></div>
+        <div class="step reveal"><div class="n">3</div><h3 class="serif">Talk it through</h3><p>Join a live video or voice call from your phone. Use headphones or Bluetooth audio, whatever's comfortable.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="topics">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="serif">Mentors for every path</h2>
+        <p>From cracking an entrance exam to switching careers or raising your first round, there's a mentor who has done it.</p>
+      </div>
+      <div class="topics">
+        <div class="topic reveal"><h3 class="serif">Exam Prep</h3><ul><li>JEE</li><li>NEET</li><li>UPSC / State PSC</li><li>MBA · CAT, XAT, GMAT</li></ul></div>
+        <div class="topic reveal"><h3 class="serif">Careers</h3><ul><li>Software Engineering</li><li>AI / Data Science</li><li>Product</li><li>Engineering</li><li>Design</li><li>Marketing</li><li>Healthcare</li><li>Finance</li><li>Sales</li><li>Operations</li><li>Legal</li></ul></div>
+        <div class="topic reveal"><h3 class="serif">Entrepreneurship</h3><ul><li>Startups</li><li>Fundraising</li><li>Venture Capital</li></ul></div>
+        <div class="topic reveal"><h3 class="serif">Life &amp; Personal</h3><ul><li>Leadership</li><li>Relationships &amp; Family</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="serif">Everything in one app</h2>
+        <p>ProMentors handles discovery, booking, payment and the call itself, so you can focus on the conversation.</p>
+      </div>
+      <div class="feat-grid reveal">
+        <div class="feat"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/></svg><h3 class="serif">Video calls</h3><p>Face-to-face sessions that feel like sitting across the table.</p></div>
+        <div class="feat"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg><h3 class="serif">Voice calls</h3><p>Prefer audio only? Talk on a voice call, on the go.</p></div>
+        <div class="feat"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><h3 class="serif">Messaging</h3><p>Chat with your mentor before and after a session to share context and follow up.</p></div>
+        <div class="feat"><svg viewBox="0 0 24 24"><path d="M12 2 15 8.5l7 .8-5.2 4.8 1.5 6.9L12 17.5 5.7 21l1.5-6.9L2 9.3l7-.8z"/></svg><h3 class="serif">Ratings &amp; availability</h3><p>See how other people rated a mentor, and who is online to talk right now.</p></div>
+        <div class="feat"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><h3 class="serif">Secure payments</h3><p>Pay through Cashfree, a trusted payment gateway. We never see or store your card details.</p></div>
+        <div class="feat"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3 class="serif">Private by design</h3><p>Calls are never recorded, your data travels over encrypted connections, and we never sell it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mentors">
+    <div class="wrap">
+      <div class="mentor-cta reveal">
+        <div>
+          <span class="eyebrow">For mentors</span>
+          <h2 class="serif">Share what you know. Get paid for your time.</h2>
+          <p>Cleared a tough exam, built a career or founded a company? Help the people coming after you.</p>
+        </div>
+        <div>
+          <ul>
+            <li>Get paid for every session you take</li>
+            <li>Take sessions when you're available</li>
+            <li>Video, voice and chat in one place</li>
+          </ul>
+          <p style="margin-top:24px"><a class="btn btn-dark" href="mailto:info@mentorpro.in?subject=Become%20a%20mentor%20on%20ProMentors">Apply to be a mentor</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="serif">Questions</h2>
+        <p>Can't find what you're looking for? Write to <a href="mailto:info@mentorpro.in">info@mentorpro.in</a>.</p>
+      </div>
+      <div class="faq">
+        <details><summary>How much does a session cost?</summary><p>Each mentor sets their own rate, shown per minute on their profile. You'll see the price before you book.</p></details>
+        <details><summary>How do I pay?</summary><p>Payments are processed in the app by Cashfree Payments. You can pay with the usual Indian payment methods. ProMentors never receives your full card or bank details.</p></details>
+        <details><summary>Are calls recorded?</summary><p>No. Audio and video are streamed live for the call and are not recorded or stored by us.</p></details>
+        <details><summary>Which devices are supported?</summary><p>ProMentors is available for Android on Google Play.</p></details>
+        <details><summary>How do I delete my account?</summary><p>Email <a href="mailto:info@mentorpro.in?subject=Account%20deletion%20request">info@mentorpro.in</a> from the email address on your account and ask for it to be deleted. We process verified requests within 30 days. See our <a href="privacy-policy.html">privacy policy</a> for details.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;padding-bottom:0">
+    <div class="wrap">
+      <div class="band reveal">
+        <div>
+          <h2 class="serif">Your next step starts with a conversation.</h2>
+          <p>Download ProMentors and find your mentor today.</p>
+        </div>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.promentors.app" target="_blank" rel="noopener">Get it on Google Play</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a href="#top" class="brand" style="margin-bottom:8px"><img src="assets/icon.png" alt="">ProMentors</a>
+      <div>© <span id="year">2026</span> ProMentors. All rights reserved.</div>
+    </div>
+    <nav aria-label="Footer">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:info@mentorpro.in">info@mentorpro.in</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), { passive: true });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
